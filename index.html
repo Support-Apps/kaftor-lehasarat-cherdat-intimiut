@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 הסרת חרדת אינטימיות</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Heebo', sans-serif;
+        }
+        
+        body {
+            background: #FFF5F7;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            color: #D4A574;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #888;
+            font-size: 1.1em;
+        }
+        
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .main-icon {
+            font-size: 80px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #D4A574;
+            font-size: 1.3em;
+            margin: 30px 0 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 15px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        
+        .buttons-grid.single {
+            grid-template-columns: 1fr;
+        }
+        
+        .power-button {
+            background: #fff;
+            border: 2px solid #FFB6C1;
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .power-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.3);
+            background: #FFF0F3;
+        }
+        
+        .power-button:active {
+            transform: scale(0.98);
+        }
+        
+        .power-button.mint { border-color: #B8E6D4; }
+        .power-button.mint:hover { background: #F0FFF8; }
+        
+        .power-button.gold { border-color: #D4A574; }
+        .power-button.gold:hover { background: #FFFAF5; }
+        
+        .button-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .button-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .button-desc {
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #FFF5F7;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .overlay.active {
+            display: flex;
+        }
+        
+        .overlay-content {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .close-overlay {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #FFB6C1;
+            border: none;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .animation-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+        
+        .animation-text {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            min-height: 60px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #FFE4EC;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            background: #FFB6C1;
+        }
+        
+        .completion-message {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #B8E6D4;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .completion-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .install-btn {
+            background: #FFB6C1;
+            border: none;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .install-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 182, 193, 0.5);
+        }
+        
+        .install-btn:disabled {
+            background: #ddd;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💕 הסרת חרדת אינטימיות</h1>
+        <p>לקרבה פיזית ורגשית בטוחה ונעימה</p>
+    </div>
+    
+    <div class="icon-container">
+        <span class="main-icon">💗</span>
+    </div>
+    
+    <div class="section-title">🤝 אינטימיות פיזית</div>
+    <div class="buttons-grid">
+        <div class="power-button" onclick="startProcess('fearPhysical')">
+            <span class="button-icon">🤝</span>
+            <div class="button-title">פחד מקרבה פיזית</div>
+            <div class="button-desc">הסרת החסימה ממגע</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('fearEmotional')">
+            <span class="button-icon">💔</span>
+            <div class="button-title">פחד מפגיעות רגשית</div>
+            <div class="button-desc">הסרת הפחד להיפתח</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('fearSeen')">
+            <span class="button-icon">👁️</span>
+            <div class="button-title">פחד להיראות</div>
+            <div class="button-desc">הסרת הפחד להיות מוכר/ת</div>
+        </div>
+        <div class="power-button" onclick="startProcess('fearRejection')">
+            <span class="button-icon">🚫</span>
+            <div class="button-title">פחד מדחייה</div>
+            <div class="button-desc">הסרת הפחד מדחייה באינטימיות</div>
+        </div>
+    </div>
+    
+    <div class="section-title">💜 ריפוי עמוק</div>
+    <div class="buttons-grid">
+        <div class="power-button mint" onclick="startProcess('bodyShame')">
+            <span class="button-icon">🪞</span>
+            <div class="button-title">בושה מהגוף</div>
+            <div class="button-desc">הסרת הבושה והביקורת העצמית</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('trustIssues')">
+            <span class="button-icon">🔐</span>
+            <div class="button-title">קשיי אמון</div>
+            <div class="button-desc">ריפוי היכולת לבטוח</div>
+        </div>
+        <div class="power-button" onclick="startProcess('pastTrauma')">
+            <span class="button-icon">🩹</span>
+            <div class="button-title">טראומות מהעבר</div>
+            <div class="button-desc">ריפוי פצעים מהעבר</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('controlFear')">
+            <span class="button-icon">🎮</span>
+            <div class="button-title">פחד מאיבוד שליטה</div>
+            <div class="button-desc">הסרת הצורך בשליטה מוחלטת</div>
+        </div>
+    </div>
+    
+    <div class="section-title">💗 אינטימיות רגשית</div>
+    <div class="buttons-grid">
+        <div class="power-button" onclick="startProcess('fearDeepConnection')">
+            <span class="button-icon">🔗</span>
+            <div class="button-title">פחד מחיבור עמוק</div>
+            <div class="button-desc">הסרת הפחד מקרבה נפשית</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('fearSharing')">
+            <span class="button-icon">💭</span>
+            <div class="button-title">פחד לשתף</div>
+            <div class="button-desc">הסרת הפחד לחשוף רגשות</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('fearDependency')">
+            <span class="button-icon">🤲</span>
+            <div class="button-title">פחד מתלות</div>
+            <div class="button-desc">הסרת הפחד להיות תלוי/ה</div>
+        </div>
+        <div class="power-button" onclick="startProcess('fearAbandonment')">
+            <span class="button-icon">🚪</span>
+            <div class="button-title">פחד מנטישה</div>
+            <div class="button-desc">הסרת הפחד שיעזבו אותי</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('emotionalWalls')">
+            <span class="button-icon">🧱</span>
+            <div class="button-title">חומות רגשיות</div>
+            <div class="button-desc">הסרת החומות שבניתי</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('fearLove')">
+            <span class="button-icon">💝</span>
+            <div class="button-title">פחד מאהבה</div>
+            <div class="button-desc">הסרת הפחד לאהוב ולהיות אהוב/ה</div>
+        </div>
+        <div class="power-button" onclick="startProcess('fearFinancial')">
+            <span class="button-icon">💰</span>
+            <div class="button-title">פחד משיתוף כלכלי</div>
+            <div class="button-desc">הסרת הפחד משיתוף כספים</div>
+        </div>
+    </div>
+    
+    <div class="section-title">✨ התקנת יכולות פיזיות</div>
+    <div class="buttons-grid">
+        <div class="power-button gold" onclick="startProcess('safeIntimacy')">
+            <span class="button-icon">🏠</span>
+            <div class="button-title">תחושת ביטחון באינטימיות</div>
+            <div class="button-desc">להרגיש בטוח/ה בקרבה</div>
+        </div>
+        <div class="power-button" onclick="startProcess('enjoyTouch')">
+            <span class="button-icon">🌸</span>
+            <div class="button-title">הנאה ממגע</div>
+            <div class="button-desc">יכולת ליהנות מקרבה פיזית</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('expressDesire')">
+            <span class="button-icon">💬</span>
+            <div class="button-title">יכולת לבטא רצונות</div>
+            <div class="button-desc">תקשורת פתוחה באינטימיות</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('bePresent')">
+            <span class="button-icon">🧘</span>
+            <div class="button-title">נוכחות ברגע</div>
+            <div class="button-desc">להיות נוכח/ת ולא לברוח</div>
+        </div>
+    </div>
+    
+    <div class="section-title">💜 התקנת יכולות רגשיות</div>
+    <div class="buttons-grid">
+        <div class="power-button" onclick="startProcess('abilityToLove')">
+            <span class="button-icon">💝</span>
+            <div class="button-title">יכולת לאהוב</div>
+            <div class="button-desc">לתת אהבה בחופשיות</div>
+        </div>
+        <div class="power-button mint" onclick="startProcess('receiveLove')">
+            <span class="button-icon">🤗</span>
+            <div class="button-title">יכולת לקבל אהבה</div>
+            <div class="button-desc">לקבל אהבה בלי פחד</div>
+        </div>
+        <div class="power-button gold" onclick="startProcess('vulnerability')">
+            <span class="button-icon">🦋</span>
+            <div class="button-title">יכולת להיות פגיע/ה</div>
+            <div class="button-desc">פגיעות בריאה כחוזק</div>
+        </div>
+        <div class="power-button" onclick="startProcess('emotionalSafety')">
+            <span class="button-icon">🛡️</span>
+            <div class="button-title">ביטחון רגשי</div>
+            <div class="button-desc">להרגיש בטוח/ה רגשית</div>
+        </div>
+    </div>
+    
+    <div class="section-title">👑 ריפוי מלא</div>
+    <div class="buttons-grid single">
+        <div class="power-button gold" onclick="startProcess('fullHealing')">
+            <span class="button-icon">💕</span>
+            <div class="button-title">ריפוי מלא של חרדת אינטימיות</div>
+            <div class="button-desc">הסרת כל החסימות - פיזיות ורגשיות - והתקנת קרבה בריאה ובטוחה</div>
+        </div>
+    </div>
+
+    <!-- Fear Physical Overlay -->
+    <div class="overlay" id="fearPhysicalOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearPhysical')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearPhysicalIcon">🤝</div>
+            <div class="animation-text" id="fearPhysicalText">מזהה את הפחד מקרבה פיזית...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearPhysicalProgress"></div>
+            </div>
+            <button class="install-btn" id="fearPhysicalBtn" onclick="runProcess('fearPhysical')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearPhysicalComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מקרבה פיזית הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה לקבל מגע בביטחון.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Emotional Overlay -->
+    <div class="overlay" id="fearEmotionalOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearEmotional')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearEmotionalIcon">💔</div>
+            <div class="animation-text" id="fearEmotionalText">מזהה את הפחד מפגיעות רגשית...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearEmotionalProgress"></div>
+            </div>
+            <button class="install-btn" id="fearEmotionalBtn" onclick="runProcess('fearEmotional')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearEmotionalComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מפגיעות רגשית הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה להיפתח בביטחון.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Seen Overlay -->
+    <div class="overlay" id="fearSeenOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearSeen')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearSeenIcon">👁️</div>
+            <div class="animation-text" id="fearSeenText">מזהה את הפחד להיראות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearSeenProgress"></div>
+            </div>
+            <button class="install-btn" id="fearSeenBtn" onclick="runProcess('fearSeen')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearSeenComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד להיראות הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה להיות מוכר/ת ואהוב/ה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Rejection Overlay -->
+    <div class="overlay" id="fearRejectionOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearRejection')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearRejectionIcon">🚫</div>
+            <div class="animation-text" id="fearRejectionText">מזהה את הפחד מדחייה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearRejectionProgress"></div>
+            </div>
+            <button class="install-btn" id="fearRejectionBtn" onclick="runProcess('fearRejection')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearRejectionComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מדחייה הוסר!</p>
+                <p style="color: #666;">את/ה ראוי/ה לאהבה ולקבלה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Body Shame Overlay -->
+    <div class="overlay" id="bodyShameOverlay">
+        <button class="close-overlay" onclick="closeOverlay('bodyShame')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="bodyShameIcon">🪞</div>
+            <div class="animation-text" id="bodyShameText">מזהה את הבושה מהגוף...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="bodyShameProgress"></div>
+            </div>
+            <button class="install-btn" id="bodyShameBtn" onclick="runProcess('bodyShame')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="bodyShameComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הבושה מהגוף הוסרה!</p>
+                <p style="color: #666;">את/ה יפה ומושלם/ת כמו שאת/ה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Issues Overlay -->
+    <div class="overlay" id="trustIssuesOverlay">
+        <button class="close-overlay" onclick="closeOverlay('trustIssues')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="trustIssuesIcon">🔐</div>
+            <div class="animation-text" id="trustIssuesText">מזהה את קשיי האמון...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="trustIssuesProgress"></div>
+            </div>
+            <button class="install-btn" id="trustIssuesBtn" onclick="runProcess('trustIssues')">🗑️ התחל/י ריפוי</button>
+            <div class="completion-message" id="trustIssuesComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ קשיי האמון נרפאו!</p>
+                <p style="color: #666;">את/ה יכול/ה לבטוח באדם הנכון.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Past Trauma Overlay -->
+    <div class="overlay" id="pastTraumaOverlay">
+        <button class="close-overlay" onclick="closeOverlay('pastTrauma')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="pastTraumaIcon">🩹</div>
+            <div class="animation-text" id="pastTraumaText">מזהה את הטראומות מהעבר...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="pastTraumaProgress"></div>
+            </div>
+            <button class="install-btn" id="pastTraumaBtn" onclick="runProcess('pastTrauma')">🗑️ התחל/י ריפוי</button>
+            <div class="completion-message" id="pastTraumaComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הטראומות נרפאו!</p>
+                <p style="color: #666;">העבר כבר לא שולט בך.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Control Fear Overlay -->
+    <div class="overlay" id="controlFearOverlay">
+        <button class="close-overlay" onclick="closeOverlay('controlFear')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="controlFearIcon">🎮</div>
+            <div class="animation-text" id="controlFearText">מזהה את הפחד מאיבוד שליטה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="controlFearProgress"></div>
+            </div>
+            <button class="install-btn" id="controlFearBtn" onclick="runProcess('controlFear')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="controlFearComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מאיבוד שליטה הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה להרפות ולזרום.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Deep Connection Overlay -->
+    <div class="overlay" id="fearDeepConnectionOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearDeepConnection')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearDeepConnectionIcon">🔗</div>
+            <div class="animation-text" id="fearDeepConnectionText">מזהה את הפחד מחיבור עמוק...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearDeepConnectionProgress"></div>
+            </div>
+            <button class="install-btn" id="fearDeepConnectionBtn" onclick="runProcess('fearDeepConnection')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearDeepConnectionComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מחיבור עמוק הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה להתחבר לעומק.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Sharing Overlay -->
+    <div class="overlay" id="fearSharingOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearSharing')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearSharingIcon">💭</div>
+            <div class="animation-text" id="fearSharingText">מזהה את הפחד לשתף...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearSharingProgress"></div>
+            </div>
+            <button class="install-btn" id="fearSharingBtn" onclick="runProcess('fearSharing')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearSharingComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד לשתף הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה לשתף את הרגשות שלך.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Dependency Overlay -->
+    <div class="overlay" id="fearDependencyOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearDependency')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearDependencyIcon">🤲</div>
+            <div class="animation-text" id="fearDependencyText">מזהה את הפחד מתלות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearDependencyProgress"></div>
+            </div>
+            <button class="install-btn" id="fearDependencyBtn" onclick="runProcess('fearDependency')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearDependencyComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מתלות הוסר!</p>
+                <p style="color: #666;">תלות בריאה היא חלק מאהבה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Abandonment Overlay -->
+    <div class="overlay" id="fearAbandonmentOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearAbandonment')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearAbandonmentIcon">🚪</div>
+            <div class="animation-text" id="fearAbandonmentText">מזהה את הפחד מנטישה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearAbandonmentProgress"></div>
+            </div>
+            <button class="install-btn" id="fearAbandonmentBtn" onclick="runProcess('fearAbandonment')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearAbandonmentComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מנטישה הוסר!</p>
+                <p style="color: #666;">את/ה שלם/ה גם בתוך הזוגיות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emotional Walls Overlay -->
+    <div class="overlay" id="emotionalWallsOverlay">
+        <button class="close-overlay" onclick="closeOverlay('emotionalWalls')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="emotionalWallsIcon">🧱</div>
+            <div class="animation-text" id="emotionalWallsText">מזהה את החומות הרגשיות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="emotionalWallsProgress"></div>
+            </div>
+            <button class="install-btn" id="emotionalWallsBtn" onclick="runProcess('emotionalWalls')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="emotionalWallsComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ החומות הרגשיות הוסרו!</p>
+                <p style="color: #666;">הלב שלך פתוח לקבל ולתת אהבה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Love Overlay -->
+    <div class="overlay" id="fearLoveOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearLove')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearLoveIcon">💝</div>
+            <div class="animation-text" id="fearLoveText">מזהה את הפחד מאהבה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearLoveProgress"></div>
+            </div>
+            <button class="install-btn" id="fearLoveBtn" onclick="runProcess('fearLove')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearLoveComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד מאהבה הוסר!</p>
+                <p style="color: #666;">את/ה מוכן/ה לאהוב ולהיות אהוב/ה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fear Financial Overlay -->
+    <div class="overlay" id="fearFinancialOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fearFinancial')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fearFinancialIcon">💰</div>
+            <div class="animation-text" id="fearFinancialText">מזהה את הפחד משיתוף כלכלי...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fearFinancialProgress"></div>
+            </div>
+            <button class="install-btn" id="fearFinancialBtn" onclick="runProcess('fearFinancial')">🗑️ התחל/י הסרה</button>
+            <div class="completion-message" id="fearFinancialComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הפחד משיתוף כלכלי הוסר!</p>
+                <p style="color: #666;">את/ה יכול/ה לשתף כלכלית בביטחון.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Safe Intimacy Overlay -->
+    <div class="overlay" id="safeIntimacyOverlay">
+        <button class="close-overlay" onclick="closeOverlay('safeIntimacy')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="safeIntimacyIcon">🏠</div>
+            <div class="animation-text" id="safeIntimacyText">מתקינה תחושת ביטחון באינטימיות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="safeIntimacyProgress"></div>
+            </div>
+            <button class="install-btn" id="safeIntimacyBtn" onclick="runProcess('safeIntimacy')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="safeIntimacyComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ תחושת הביטחון הותקנה!</p>
+                <p style="color: #666;">את/ה מרגיש/ה בטוח/ה בקרבה.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enjoy Touch Overlay -->
+    <div class="overlay" id="enjoyTouchOverlay">
+        <button class="close-overlay" onclick="closeOverlay('enjoyTouch')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="enjoyTouchIcon">🌸</div>
+            <div class="animation-text" id="enjoyTouchText">מתקינה הנאה ממגע...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="enjoyTouchProgress"></div>
+            </div>
+            <button class="install-btn" id="enjoyTouchBtn" onclick="runProcess('enjoyTouch')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="enjoyTouchComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ היכולת ליהנות ממגע הותקנה!</p>
+                <p style="color: #666;">את/ה יכול/ה ליהנות מקרבה פיזית.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Express Desire Overlay -->
+    <div class="overlay" id="expressDesireOverlay">
+        <button class="close-overlay" onclick="closeOverlay('expressDesire')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="expressDesireIcon">💬</div>
+            <div class="animation-text" id="expressDesireText">מתקינה יכולת לבטא רצונות...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="expressDesireProgress"></div>
+            </div>
+            <button class="install-btn" id="expressDesireBtn" onclick="runProcess('expressDesire')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="expressDesireComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ היכולת לבטא רצונות הותקנה!</p>
+                <p style="color: #666;">את/ה יכול/ה לתקשר בפתיחות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Be Present Overlay -->
+    <div class="overlay" id="bePresentOverlay">
+        <button class="close-overlay" onclick="closeOverlay('bePresent')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="bePresentIcon">🧘</div>
+            <div class="animation-text" id="bePresentText">מתקינה נוכחות ברגע...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="bePresentProgress"></div>
+            </div>
+            <button class="install-btn" id="bePresentBtn" onclick="runProcess('bePresent')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="bePresentComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הנוכחות ברגע הותקנה!</p>
+                <p style="color: #666;">את/ה נוכח/ת ומחובר/ת.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ability To Love Overlay -->
+    <div class="overlay" id="abilityToLoveOverlay">
+        <button class="close-overlay" onclick="closeOverlay('abilityToLove')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="abilityToLoveIcon">💝</div>
+            <div class="animation-text" id="abilityToLoveText">מתקינה יכולת לאהוב...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="abilityToLoveProgress"></div>
+            </div>
+            <button class="install-btn" id="abilityToLoveBtn" onclick="runProcess('abilityToLove')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="abilityToLoveComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ היכולת לאהוב הותקנה!</p>
+                <p style="color: #666;">את/ה יכול/ה לתת אהבה בחופשיות.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receive Love Overlay -->
+    <div class="overlay" id="receiveLoveOverlay">
+        <button class="close-overlay" onclick="closeOverlay('receiveLove')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="receiveLoveIcon">🤗</div>
+            <div class="animation-text" id="receiveLoveText">מתקינה יכולת לקבל אהבה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="receiveLoveProgress"></div>
+            </div>
+            <button class="install-btn" id="receiveLoveBtn" onclick="runProcess('receiveLove')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="receiveLoveComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ היכולת לקבל אהבה הותקנה!</p>
+                <p style="color: #666;">את/ה יכול/ה לקבל אהבה בלי פחד.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vulnerability Overlay -->
+    <div class="overlay" id="vulnerabilityOverlay">
+        <button class="close-overlay" onclick="closeOverlay('vulnerability')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="vulnerabilityIcon">🦋</div>
+            <div class="animation-text" id="vulnerabilityText">מתקינה יכולת להיות פגיע/ה...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="vulnerabilityProgress"></div>
+            </div>
+            <button class="install-btn" id="vulnerabilityBtn" onclick="runProcess('vulnerability')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="vulnerabilityComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ היכולת להיות פגיע/ה הותקנה!</p>
+                <p style="color: #666;">פגיעות היא הכוח האמיתי שלך.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emotional Safety Overlay -->
+    <div class="overlay" id="emotionalSafetyOverlay">
+        <button class="close-overlay" onclick="closeOverlay('emotionalSafety')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="emotionalSafetyIcon">🛡️</div>
+            <div class="animation-text" id="emotionalSafetyText">מתקינה ביטחון רגשי...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="emotionalSafetyProgress"></div>
+            </div>
+            <button class="install-btn" id="emotionalSafetyBtn" onclick="runProcess('emotionalSafety')">✨ התחל/י התקנה</button>
+            <div class="completion-message" id="emotionalSafetyComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הביטחון הרגשי הותקן!</p>
+                <p style="color: #666;">את/ה מרגיש/ה בטוח/ה רגשית.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Healing Overlay -->
+    <div class="overlay" id="fullHealingOverlay">
+        <button class="close-overlay" onclick="closeOverlay('fullHealing')">✕</button>
+        <div class="overlay-content">
+            <div class="animation-icon" id="fullHealingIcon">💕</div>
+            <div class="animation-text" id="fullHealingText">מתחילה ריפוי מלא...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="fullHealingProgress"></div>
+            </div>
+            <button class="install-btn" id="fullHealingBtn" onclick="runProcess('fullHealing')">💕 התחל/י ריפוי מלא</button>
+            <div class="completion-message" id="fullHealingComplete">
+                <p style="font-size: 1.3em; margin-bottom: 10px; color: #D4A574;">✅ הריפוי המלא הושלם!</p>
+                <p style="color: #666;">את/ה מוכן/ה לאינטימיות בריאה, בטוחה ומהנה.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const processStages = {
+            fearPhysical: [
+                { percent: 10, text: '🤝 מזהה את הפחד מקרבה פיזית...', icon: '🤝' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הזכרונות הקשורים...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את המתח מהגוף...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את החסימה ממגע...', icon: '🗑️' },
+                { percent: 60, text: '✨ משחררת את הגוף...', icon: '✨' },
+                { percent: 70, text: '💆 מרגיעה את מערכת העצבים...', icon: '💆' },
+                { percent: 80, text: '🌸 מתקינה קבלה של מגע...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מקרבה פיזית הוסר!', icon: '🤝' }
+            ],
+            fearEmotional: [
+                { percent: 10, text: '💔 מזהה את הפחד מפגיעות רגשית...', icon: '💔' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד להיפתח...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הפעמים שנפגעת...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד מפגיעה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את החומות הרגשיות...', icon: '🗑️' },
+                { percent: 60, text: '✨ פותחת את הלב בעדינות...', icon: '✨' },
+                { percent: 70, text: '💜 מרפאה את הלב...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה אומץ להיפתח...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מפגיעות רגשית הוסר!', icon: '💜' }
+            ],
+            fearSeen: [
+                { percent: 10, text: '👁️ מזהה את הפחד להיראות...', icon: '👁️' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד להיות מוכר/ת...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל רגעי הבושה...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד מחשיפה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את המסכות...', icon: '🗑️' },
+                { percent: 60, text: '✨ מאפשרת להיות אותנטי/ת...', icon: '✨' },
+                { percent: 70, text: '💎 את/ה יפה כמו שאת/ה...', icon: '💎' },
+                { percent: 80, text: '🌸 מתקינה ביטחון להיראות...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד להיראות הוסר!', icon: '👁️' }
+            ],
+            fearRejection: [
+                { percent: 10, text: '🚫 מזהה את הפחד מדחייה...', icon: '🚫' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הדחיות מהעבר...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הכאב מדחייה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את הציפייה לדחייה...', icon: '🗑️' },
+                { percent: 60, text: '✨ מתקינה ערך עצמי...', icon: '✨' },
+                { percent: 70, text: '💎 את/ה ראוי/ה לאהבה...', icon: '💎' },
+                { percent: 80, text: '🌸 מתקינה ביטחון בקבלה...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מדחייה הוסר!', icon: '💕' }
+            ],
+            bodyShame: [
+                { percent: 10, text: '🪞 מזהה את הבושה מהגוף...', icon: '🪞' },
+                { percent: 20, text: '🔍 מאתרת את מקור הביקורת העצמית...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל המחשבות השליליות...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הבושה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את הביקורת העצמית...', icon: '🗑️' },
+                { percent: 60, text: '✨ מתקינה קבלה עצמית...', icon: '✨' },
+                { percent: 70, text: '💎 הגוף שלך מושלם/ת...', icon: '💎' },
+                { percent: 80, text: '🌸 מתקינה אהבה לגוף...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הבושה מהגוף הוסרה!', icon: '🪞' }
+            ],
+            trustIssues: [
+                { percent: 10, text: '🔐 מזהה את קשיי האמון...', icon: '🔐' },
+                { percent: 20, text: '🔍 מאתרת את הפעמים שהאמון נשבר...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הבגידות והאכזבות...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הכאב...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את החשדנות...', icon: '🗑️' },
+                { percent: 60, text: '✨ מרפאה את היכולת לבטוח...', icon: '✨' },
+                { percent: 70, text: '💎 יש אנשים שראויים לאמון...', icon: '💎' },
+                { percent: 80, text: '🌸 מתקינה אמון בריא...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ קשיי האמון נרפאו!', icon: '🔐' }
+            ],
+            pastTrauma: [
+                { percent: 10, text: '🩹 מזהה את הטראומות מהעבר...', icon: '🩹' },
+                { percent: 20, text: '🔍 מאתרת את הפצעים הישנים...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הכאב...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הזכרונות הכואבים...', icon: '🧹' },
+                { percent: 50, text: '🗑️ משחררת את הטראומה מהגוף...', icon: '🗑️' },
+                { percent: 60, text: '✨ מרפאה את הפצעים...', icon: '✨' },
+                { percent: 70, text: '💜 את/ה בטוח/ה עכשיו...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה תחושת ביטחון חדשה...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הטראומות נרפאו!', icon: '🩹' }
+            ],
+            controlFear: [
+                { percent: 10, text: '🎮 מזהה את הפחד מאיבוד שליטה...', icon: '🎮' },
+                { percent: 20, text: '🔍 מאתרת את הצורך בשליטה...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל רגעי חוסר השליטה...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד לוותר...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את הצורך בשליטה מוחלטת...', icon: '🗑️' },
+                { percent: 60, text: '✨ מאפשרת זרימה...', icon: '✨' },
+                { percent: 70, text: '🌊 להרפות זה בטוח...', icon: '🌊' },
+                { percent: 80, text: '🌸 מתקינה יכולת לזרום...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מאיבוד שליטה הוסר!', icon: '🎮' }
+            ],
+            fearDeepConnection: [
+                { percent: 10, text: '🔗 מזהה את הפחד מחיבור עמוק...', icon: '🔗' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד מקרבה נפשית...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הפעמים שחיבור כאב...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד להיות קרוב/ה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את החסימה מחיבור...', icon: '🗑️' },
+                { percent: 60, text: '✨ פותחת את הלב לקרבה...', icon: '✨' },
+                { percent: 70, text: '💜 חיבור עמוק הוא בטוח...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה יכולת להתחבר לעומק...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מחיבור עמוק הוסר!', icon: '🔗' }
+            ],
+            fearSharing: [
+                { percent: 10, text: '💭 מזהה את הפחד לשתף...', icon: '💭' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד לחשוף רגשות...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הפעמים ששיתוף פגע...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד מחשיפה רגשית...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את החסימה משיתוף...', icon: '🗑️' },
+                { percent: 60, text: '✨ הרגשות שלך חשובים...', icon: '✨' },
+                { percent: 70, text: '💜 בטוח לשתף עם האדם הנכון...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה יכולת לשתף בפתיחות...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד לשתף הוסר!', icon: '💭' }
+            ],
+            fearDependency: [
+                { percent: 10, text: '🤲 מזהה את הפחד מתלות...', icon: '🤲' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד להזדקק...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הפעמים שתלות כאבה...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד להיות תלוי/ה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את האמונה שתלות זה חולשה...', icon: '🗑️' },
+                { percent: 60, text: '✨ תלות בריאה היא כוח...', icon: '✨' },
+                { percent: 70, text: '💜 להזדקק לאחר זה אנושי...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה יכולת לתלות בריאה...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מתלות הוסר!', icon: '🤲' }
+            ],
+            fearAbandonment: [
+                { percent: 10, text: '🚪 מזהה את הפחד מנטישה...', icon: '🚪' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד שיעזבו...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הנטישות מהעבר...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד העמוק מנטישה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את הציפייה לנטישה...', icon: '🗑️' },
+                { percent: 60, text: '✨ את/ה שלם/ה בפני עצמך...', icon: '✨' },
+                { percent: 70, text: '💜 את/ה ראוי/ה להישארות...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה ביטחון פנימי...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מנטישה הוסר!', icon: '🚪' }
+            ],
+            emotionalWalls: [
+                { percent: 10, text: '🧱 מזהה את החומות הרגשיות...', icon: '🧱' },
+                { percent: 20, text: '🔍 מאתרת מתי בנית אותן...', icon: '🔍' },
+                { percent: 30, text: '📦 מבינה למה היית צריך/ה אותן...', icon: '📦' },
+                { percent: 40, text: '🧹 מודה להן על ההגנה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מתחילה להוריד לבנה אחרי לבנה...', icon: '🗑️' },
+                { percent: 60, text: '✨ עכשיו בטוח לפתוח את הלב...', icon: '✨' },
+                { percent: 70, text: '💜 את/ה יכול/ה להגן על עצמך בדרכים אחרות...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה גבולות בריאים במקום חומות...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ החומות הרגשיות הוסרו!', icon: '🧱' }
+            ],
+            fearLove: [
+                { percent: 10, text: '💝 מזהה את הפחד מאהבה...', icon: '💝' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד לאהוב...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל הפעמים שאהבה כאבה...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד מאהבה...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את האמונה שאהבה מסוכנת...', icon: '🗑️' },
+                { percent: 60, text: '✨ אהבה יכולה להיות בטוחה...', icon: '✨' },
+                { percent: 70, text: '💜 את/ה ראוי/ה לאהבה אמיתית...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה פתיחות לאהבה...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד מאהבה הוסר!', icon: '💝' }
+            ],
+            fearFinancial: [
+                { percent: 10, text: '💰 מזהה את הפחד משיתוף כלכלי...', icon: '💰' },
+                { percent: 20, text: '🔍 מאתרת את מקור הפחד לשתף כספים...', icon: '🔍' },
+                { percent: 30, text: '📦 אוספת את כל החוויות הכלכליות הקשות...', icon: '📦' },
+                { percent: 40, text: '🧹 מנקה את הפחד מאיבוד שליטה כלכלית...', icon: '🧹' },
+                { percent: 50, text: '🗑️ מסירה את האמונה ששיתוף כלכלי מסוכן...', icon: '🗑️' },
+                { percent: 60, text: '✨ שיתוף כלכלי יכול להיות בטוח...', icon: '✨' },
+                { percent: 70, text: '💜 את/ה יכול/ה לשתף עם האדם הנכון...', icon: '💜' },
+                { percent: 80, text: '🌸 מתקינה יכולת לשיתוף כלכלי בריא...', icon: '🌸' },
+                { percent: 90, text: '💗 משלימה את הריפוי...', icon: '💗' },
+                { percent: 100, text: '✅ הפחד משיתוף כלכלי הוסר!', icon: '💰' }
+            ],
+            safeIntimacy: [
+                { percent: 10, text: '🏠 מתחילה התקנת תחושת ביטחון...', icon: '🏠' },
+                { percent: 20, text: '💫 בונה מרחב בטוח פנימי...', icon: '💫' },
+                { percent: 30, text: '🌟 מחזקת את הגבולות הבריאים...', icon: '🌟' },
+                { percent: 40, text: '✨ מתקינה יכולת לומר כן ולא...', icon: '✨' },
+                { percent: 50, text: '💎 את/ה שולט/ת בגבולות שלך...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה תחושת ביטחון בגוף...', icon: '🌸' },
+                { percent: 70, text: '💜 קרבה יכולה להיות בטוחה...', icon: '💜' },
+                { percent: 80, text: '🏠 מחזקת את הביטחון...', icon: '🏠' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ תחושת הביטחון הותקנה!', icon: '🏠' }
+            ],
+            enjoyTouch: [
+                { percent: 10, text: '🌸 מתחילה התקנת הנאה ממגע...', icon: '🌸' },
+                { percent: 20, text: '💫 פותחת את החושים...', icon: '💫' },
+                { percent: 30, text: '🌟 מחברת לתחושות הגוף...', icon: '🌟' },
+                { percent: 40, text: '✨ מרשה לגוף להרגיש...', icon: '✨' },
+                { percent: 50, text: '💎 מגע יכול להיות נעים...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה יכולת ליהנות...', icon: '🌸' },
+                { percent: 70, text: '💜 הגוף שלך ראוי להנאה...', icon: '💜' },
+                { percent: 80, text: '✨ מחזקת את החיבור לתחושות...', icon: '✨' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ היכולת ליהנות ממגע הותקנה!', icon: '🌸' }
+            ],
+            expressDesire: [
+                { percent: 10, text: '💬 מתחילה התקנת יכולת לבטא רצונות...', icon: '💬' },
+                { percent: 20, text: '💫 פותחת את ערוצי התקשורת...', icon: '💫' },
+                { percent: 30, text: '🌟 מרשה לעצמך לרצות...', icon: '🌟' },
+                { percent: 40, text: '✨ הרצונות שלך חשובים...', icon: '✨' },
+                { percent: 50, text: '💎 מתקינה אומץ לבקש...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה יכולת לתקשר...', icon: '🌸' },
+                { percent: 70, text: '💜 את/ה יכול/ה להגיד מה את/ה רוצה...', icon: '💜' },
+                { percent: 80, text: '💬 מחזקת את התקשורת הפתוחה...', icon: '💬' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ היכולת לבטא רצונות הותקנה!', icon: '💬' }
+            ],
+            bePresent: [
+                { percent: 10, text: '🧘 מתחילה התקנת נוכחות ברגע...', icon: '🧘' },
+                { percent: 20, text: '💫 מרגיעה את המחשבות...', icon: '💫' },
+                { percent: 30, text: '🌟 מחברת לכאן ועכשיו...', icon: '🌟' },
+                { percent: 40, text: '✨ מפסיקה את הבריחה...', icon: '✨' },
+                { percent: 50, text: '💎 הרגע הזה בטוח...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה נוכחות בגוף...', icon: '🌸' },
+                { percent: 70, text: '💜 את/ה יכול/ה להישאר כאן...', icon: '💜' },
+                { percent: 80, text: '🧘 מחזקת את הנוכחות...', icon: '🧘' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ הנוכחות ברגע הותקנה!', icon: '🧘' }
+            ],
+            abilityToLove: [
+                { percent: 10, text: '💝 מתחילה התקנת יכולת לאהוב...', icon: '💝' },
+                { percent: 20, text: '💫 פותחת את הלב לנתינה...', icon: '💫' },
+                { percent: 30, text: '🌟 מסירה את החסימות מאהבה...', icon: '🌟' },
+                { percent: 40, text: '✨ אהבה היא בטוחה לתת...', icon: '✨' },
+                { percent: 50, text: '💎 את/ה יכול/ה לאהוב בחופשיות...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה זרימה של אהבה...', icon: '🌸' },
+                { percent: 70, text: '💜 הלב שלך מלא באהבה לתת...', icon: '💜' },
+                { percent: 80, text: '💝 מחזקת את היכולת לאהוב...', icon: '💝' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ היכולת לאהוב הותקנה!', icon: '💝' }
+            ],
+            receiveLove: [
+                { percent: 10, text: '🤗 מתחילה התקנת יכולת לקבל אהבה...', icon: '🤗' },
+                { percent: 20, text: '💫 פותחת את הלב לקבלה...', icon: '💫' },
+                { percent: 30, text: '🌟 מסירה את החסימות מקבלה...', icon: '🌟' },
+                { percent: 40, text: '✨ את/ה ראוי/ה לקבל אהבה...', icon: '✨' },
+                { percent: 50, text: '💎 אהבה היא בטוחה לקבל...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה פתיחות לקבלה...', icon: '🌸' },
+                { percent: 70, text: '💜 את/ה יכול/ה לקבל בלי פחד...', icon: '💜' },
+                { percent: 80, text: '🤗 מחזקת את היכולת לקבל...', icon: '🤗' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ היכולת לקבל אהבה הותקנה!', icon: '🤗' }
+            ],
+            vulnerability: [
+                { percent: 10, text: '🦋 מתחילה התקנת יכולת להיות פגיע/ה...', icon: '🦋' },
+                { percent: 20, text: '💫 מבינה שפגיעות היא כוח...', icon: '💫' },
+                { percent: 30, text: '🌟 מסירה את השריון המגן...', icon: '🌟' },
+                { percent: 40, text: '✨ בטוח להראות את האמת...', icon: '✨' },
+                { percent: 50, text: '💎 פגיעות מאפשרת חיבור אמיתי...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה אומץ להיות אותנטי/ת...', icon: '🌸' },
+                { percent: 70, text: '💜 את/ה יכול/ה להיות פגיע/ה ובטוח/ה...', icon: '💜' },
+                { percent: 80, text: '🦋 מחזקת את הפגיעות הבריאה...', icon: '🦋' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ היכולת להיות פגיע/ה הותקנה!', icon: '🦋' }
+            ],
+            emotionalSafety: [
+                { percent: 10, text: '🛡️ מתחילה התקנת ביטחון רגשי...', icon: '🛡️' },
+                { percent: 20, text: '💫 בונה מרחב בטוח פנימי...', icon: '💫' },
+                { percent: 30, text: '🌟 מחזקת את הגבולות הרגשיים...', icon: '🌟' },
+                { percent: 40, text: '✨ את/ה יכול/ה להגן על עצמך רגשית...', icon: '✨' },
+                { percent: 50, text: '💎 הרגשות שלך מוגנים...', icon: '💎' },
+                { percent: 60, text: '🌸 מתקינה תחושת ביטחון רגשי...', icon: '🌸' },
+                { percent: 70, text: '💜 את/ה בטוח/ה רגשית...', icon: '💜' },
+                { percent: 80, text: '🛡️ מחזקת את הביטחון הרגשי...', icon: '🛡️' },
+                { percent: 90, text: '💗 משלימה את ההתקנה...', icon: '💗' },
+                { percent: 100, text: '✅ הביטחון הרגשי הותקן!', icon: '🛡️' }
+            ],
+            fullHealing: [
+                { percent: 10, text: '💕 מתחילה ריפוי מלא של חרדת אינטימיות...', icon: '💕' },
+                { percent: 20, text: '😰 מסירה את כל הפחדים הפיזיים...', icon: '😰' },
+                { percent: 30, text: '💗 מסירה את כל הפחדים הרגשיים...', icon: '💗' },
+                { percent: 40, text: '🩹 מרפאה את כל הטראומות...', icon: '🩹' },
+                { percent: 50, text: '🧱 מורידה את כל החומות...', icon: '🧱' },
+                { percent: 60, text: '🔐 מרפאה את האמון...', icon: '🔐' },
+                { percent: 70, text: '🏠 מתקינה תחושת ביטחון...', icon: '🏠' },
+                { percent: 80, text: '🌸 מתקינה הנאה וחיבור...', icon: '🌸' },
+                { percent: 90, text: '💝 פותחת את הלב לאהבה...', icon: '💝' },
+                { percent: 100, text: '✅ הריפוי המלא הושלם!', icon: '💕' }
+            ]
+        };
+        
+        function startProcess(type) {
+            document.getElementById(type + 'Overlay').classList.add('active');
+            document.getElementById(type + 'Progress').style.width = '0%';
+            document.getElementById(type + 'Complete').classList.remove('show');
+            document.getElementById(type + 'Btn').disabled = false;
+            
+            const btnTexts = {
+                fearPhysical: '🗑️ התחל/י הסרה',
+                fearEmotional: '🗑️ התחל/י הסרה',
+                fearSeen: '🗑️ התחל/י הסרה',
+                fearRejection: '🗑️ התחל/י הסרה',
+                bodyShame: '🗑️ התחל/י הסרה',
+                trustIssues: '🗑️ התחל/י ריפוי',
+                pastTrauma: '🗑️ התחל/י ריפוי',
+                controlFear: '🗑️ התחל/י הסרה',
+                fearDeepConnection: '🗑️ התחל/י הסרה',
+                fearSharing: '🗑️ התחל/י הסרה',
+                fearDependency: '🗑️ התחל/י הסרה',
+                fearAbandonment: '🗑️ התחל/י הסרה',
+                emotionalWalls: '🗑️ התחל/י הסרה',
+                fearLove: '🗑️ התחל/י הסרה',
+                fearFinancial: '🗑️ התחל/י הסרה',
+                safeIntimacy: '✨ התחל/י התקנה',
+                enjoyTouch: '✨ התחל/י התקנה',
+                expressDesire: '✨ התחל/י התקנה',
+                bePresent: '✨ התחל/י התקנה',
+                abilityToLove: '✨ התחל/י התקנה',
+                receiveLove: '✨ התחל/י התקנה',
+                vulnerability: '✨ התחל/י התקנה',
+                emotionalSafety: '✨ התחל/י התקנה',
+                fullHealing: '💕 התחל/י ריפוי מלא'
+            };
+            document.getElementById(type + 'Btn').textContent = btnTexts[type];
+        }
+        
+        function closeOverlay(type) {
+            document.getElementById(type + 'Overlay').classList.remove('active');
+        }
+        
+        function runProcess(type) {
+            const btn = document.getElementById(type + 'Btn');
+            const progress = document.getElementById(type + 'Progress');
+            const text = document.getElementById(type + 'Text');
+            const icon = document.getElementById(type + 'Icon');
+            const stages = processStages[type];
+            
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '⏳ בתהליך...';
+            
+            let stage = 0;
+            const interval = setInterval(() => {
+                if (stage < stages.length) {
+                    progress.style.width = stages[stage].percent + '%';
+                    text.textContent = stages[stage].text;
+                    icon.textContent = stages[stage].icon;
+                    stage++;
+                } else {
+                    clearInterval(interval);
+                    document.getElementById(type + 'Complete').classList.add('show');
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                }
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
